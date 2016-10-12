@@ -137,6 +137,8 @@ public class ImplicitTreap
     {
         if(root==null)
             return;
+        push(root.left);
+        push(root.right);
         root.size=1+getSize(root.left)+getSize(root.right);
         root.sum= operation(root);
     }
@@ -152,7 +154,7 @@ public class ImplicitTreap
         if(root==null)
             return;
         root.data+=root.lazy;
-        root.sum+=(getSize(root.left)+getSize(root.right)+1)*root.lazy;/*Remove any pending updation, here we add delta to current value, sum will be calculated while we go :)*/
+        root.sum+=(getSize(root))*root.lazy;/*Remove any pending updation, here we add delta to current value, sum will be calculated while we go :)*/
         /*Something to do with sum value too........*/
         
         if(root.left!=null)
